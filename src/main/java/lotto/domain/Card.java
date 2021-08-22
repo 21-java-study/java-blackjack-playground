@@ -36,4 +36,12 @@ public class Card {
         int index = suitMap.get(suit) * denominationMap.get(denomination);
         return cardMap.get(index);
     }
+
+    public int getScore(){
+        return denomination.getScore();
+    }
+
+    public boolean isAce(){
+        return denomination.isAce();
+    }
 }
