@@ -7,4 +7,7 @@ public class Player extends Participant{
         super();
     }
 
+    public Player(Cards cards) {
+        super(cards);
+    }
 }

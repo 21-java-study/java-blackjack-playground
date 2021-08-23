@@ -7,4 +7,7 @@ public class Dealer extends Participant{
         super();
     }
 
+    public Dealer(Cards cards) {
+        super(cards);
+    }
 }
