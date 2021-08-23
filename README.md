@@ -1,26 +1,26 @@
-## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
+### 기능 목록 정의
 
----
-## 학습 효과를 높이기 위해 추천하는 미션 진행 방법
+기본적으로 firstChallenge의 기능 목록을 따른다.
+<br>
+<br>
 
----
-1. 피드백 강의 전까지 미션 진행 
-> 피드백 강의 전까지 혼자 힘으로 미션 진행. 미션을 진행하면서 하나의 작업이 끝날 때 마다 add, commit
-> 예를 들어 다음 숫자 야구 게임의 경우 0, 1, 2단계까지 구현을 완료한 후 push
+#### 메세지
+- [x] 카드를 생성하라(Denomination, Suit 랜덤)
+- [x] 딜러에게 1장의 카드, 플레이어에게 2장의 카드를 세팅하라
+- [x] 플레이어의 배팅 금액을 저장하라
+- [x] 첫 2장의 카드가 21(blackjack)인지 확인하라
+- [x] 플레이어에게 카드를 추가로 더 받을 것인지 물어봐라(hit)
+- [x] 딜러에게 1장의 카드를 더 세팅하라
+- [x] 딜러의 점수를 확인하여 16이하이면 1장의 카드를 더 세팅하라
+- [x] 딜러와 플레이어의 점수를 계산하라
+- [x] bust를 찾아라
+- [x] 승자를 찾아라
+- [x] 베팅 금액에 기반하여 최중 수익을 계산하라  
+  <br>
+  <br>
 
-![mission baseball](https://raw.githubusercontent.com/next-step/nextstep-docs/master/playground/images/mission_baseball.png)
-
----
-2. 피드백 앞 단계까지 미션 구현을 완료한 후 피드백 강의를 학습한다.
-
----
-3. Git 브랜치를 master 또는 main으로 변경한 후 피드백을 반영하기 위한 새로운 브랜치를 생성한 후 처음부터 다시 미션 구현을 도전한다.
-
-```
-git branch -a // 모든 로컬 브랜치 확인
-git checkout master // 기본 브랜치가 master인 경우
-git checkout main // 기본 브랜치가 main인 경우
-
-git checkout -b 브랜치이름
-ex) git checkout -b apply-feedback
-```
+#### 약속
+- 인스턴스 변수를 많이 사용하지 말자
+- 2depth를 유지하자
+- 책임과 역할을 잘 나누자
+- 캡슐화 도전
