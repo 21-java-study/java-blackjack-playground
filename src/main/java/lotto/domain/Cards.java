@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cards {
@@ -11,6 +12,10 @@ public class Cards {
     public Cards(List<Card> cards) {
         this.cards = cards;
 
+    }
+
+    public Cards() {
+        cards = new ArrayList<>();
     }
 
     public int sumScore() {
@@ -28,5 +33,13 @@ public class Cards {
                 .filter(Card::isAce)
                 .findFirst()
                 .isPresent();
+    }
+
+    public void add(Card card) {
+        cards.add(card);
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
