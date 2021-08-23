@@ -15,8 +15,10 @@ public class PlayerTest {
     }
 
     @Test
-    void test_dealer_received_card() {
+    void test_player_received_card() {
         player.receiveCard(Card.of(Suit.HEART, Denomination.NINE));
         assertThat(player.getCards()).contains(Card.of(Suit.HEART, Denomination.NINE));
     }
+
+
 }
