@@ -1,20 +1,10 @@
 package lotto.domain;
 
-import java.util.List;
 
-public class Dealer {
-
-    private Cards cards;
+public class Dealer extends Participant{
 
     public Dealer() {
-        cards = new Cards();
+        super();
     }
 
-    public void receiveCard(Card card) {
-        cards.add(card);
-    }
-
-    public List<Card> getCards() {
-        return cards.getCards();
-    }
 }
