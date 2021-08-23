@@ -17,7 +17,7 @@ public class Card {
         }
         for (Suit suit : Suit.values()) {
             for (Denomination denomination : Denomination.values()) {
-                int index = suitMap.get(suit) * denominationMap.get(denomination);
+                int index = suitMap.get(suit) * denominationMap.size() + denominationMap.get(denomination);
                 cardMap.put(index, new Card(suit, denomination));
             }
         }
@@ -33,15 +33,15 @@ public class Card {
     }
 
     public static Card of(Suit suit, Denomination denomination) {
-        int index = suitMap.get(suit) * denominationMap.get(denomination);
+        int index = suitMap.get(suit) * denominationMap.size() + denominationMap.get(denomination);
         return cardMap.get(index);
     }
 
-    public int getScore(){
+    public int getScore() {
         return denomination.getScore();
     }
 
-    public boolean isAce(){
+    public boolean isAce() {
         return denomination.isAce();
     }
 }
