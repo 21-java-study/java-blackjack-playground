@@ -90,7 +90,6 @@ ex) git checkout -b apply-feedback
     : 숫자(number), 무늬(suit)
 >####
 > - 메서드  
-   : 숫자가 ace일 때 1로 계산할 건지, 11로 계산할 건지 판단하기  
    : 카드에 대한 정보(숫자 + 무늬)를 문자열로 반환하기
 
 > ###2)  Cards
@@ -102,6 +101,7 @@ ex) git checkout -b apply-feedback
 > ####
 > - 메서드  
    : 가지고 있는 카드 총합 구하기
+>   * 숫자가 ace일 때 1로 계산할 건지, 11로 계산할 건지 판단하기
 
 > ###3) Deck
 > - model
