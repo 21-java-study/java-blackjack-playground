@@ -16,4 +16,8 @@ public class Card {
     public String getScore() {
         return score.getScore();
     }
+
+    public String extractInfo() {
+        return score.getScore() + suit.getSuit();
+    }
 }
