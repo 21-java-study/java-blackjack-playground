@@ -12,6 +12,7 @@ public class Score {
         put("7", 7);
         put("8", 8);
         put("9", 9);
+        put("10", 10);
         put("Q", 10);
         put("K", 10);
         put("J", 10);
