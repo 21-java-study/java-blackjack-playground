@@ -87,7 +87,7 @@ ex) git checkout -b apply-feedback
 > - 트럼프 카드 한 장.
 > ####
 > - 필드  
-    : 숫자(number), 무늬(suit)
+    : 숫자(score), 무늬(suit)
 >####
 > - 메서드  
    : 카드에 대한 정보(숫자 + 무늬)를 문자열로 반환하기
