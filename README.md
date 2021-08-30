@@ -138,10 +138,9 @@ ex) git checkout -b apply-feedback
    : 이름(name)  
    : 베팅 금액(bettingMoney)
 > ####
-> - 메서드  
-   : 전달받은 playResult와 현재 가지고 있는 카드의 총합을 토대로 최종 수익 계산하기  
+> - 메서드    
    : 가지고 있는 카드들의 정보를 문자열로 반환하기  
-   : 전달받은 카드 한 장을 자신의 카드 리스트에 넣기  
+   : 전달받은 카드를 자신의 카드 리스트에 넣기  
    : 최종 수익에 대한 정보를 문자열로 반환하기  
 >  : 카드를 추가로 지급받을 수 있는 상태인지 조회하기(선언만)  
 
@@ -152,15 +151,18 @@ ex) git checkout -b apply-feedback
 > - 필드  
 > ####
 > - 메서드  
+    : 전달받은 playResult와 현재 가지고 있는 카드의 총합을 토대로 최종 수익 계산   
+      
 >   : 카드를 추가로 지급받을 수 있는 상태인지 조회하기 (카드 총합이 21을 초과했는지를 기준으로)  
 
 > ###7) Dealer
 > - model
-> - participant를 상속받은 딜러
+> - participant 를 상속받은 딜러
 > ####
 > - 필드
 > ####
 > - 메서드  
+>   : 플레이어가 잃은 만큼 +, 얻은 만큼 -하여 최종 수익 계산   
     : 현재 가지고 있는 카드가 16 이하인지 아닌지 판별하기  
 >   : 카드를 추가로 지급받을 수 있는 상태인지 조회하기 (카드 총합이 16을 초과했는지를 기준으로)
 
@@ -213,8 +215,11 @@ ex) git checkout -b apply-feedback
 > - 게임에 대한 결과 정보를 가지고 있는 객체
 > ####
 > - 필드  
->   : 게임 결과 상태 (playStatus - blackjack, bust, win, continue)  
->   : 승리한 참여자 유형 (winnerType - player, dealer, none)
+>   : 게임 결과 상태 (playStatus - blackjack, dealer_bust, win, continue)  
+>   -> 그냥 dealer에 대한 상태로 변경하자... 그게 제일 편하겠다..  
+>   -> playStatus 아니고 dealerStatus로..playResult도 필요없을듯  
+>   -> 아니다.. playresult에 isFirstGround랑 dealerStatus를 담아야 하나..? 일단은 그냥 하고 있음..
+>   -> 카드 소진 되어서 종료됐을 경우에는 dealer와 player 중에 가장 21에 가까운 쪽이 이기는 건데..이건 manager가 해야하는 일인거 같음
 
 > ###11) Name
 > - 참여자 이름 정보를 가지고 있는 원시값 포장 객체
@@ -223,7 +228,7 @@ ex) git checkout -b apply-feedback
 > - 메서드  
 >   : 생성자에서 예외처리 (공백 등)
 
-> ###12) BettingMoeny
+> ###12) BettingMoney
 > - 베팅 금액 정보를 가지고 있는 원시값 포장 객체
 > - 필드  
 >   : 금액(bettingMoney: int)  
@@ -233,12 +238,8 @@ ex) git checkout -b apply-feedback
 > ###13) PlayStatus
 > - 게임 결과 상태를 나타내는 enum 객체
 > - 필드  
->   : blackjack, bust, win, continue
+>   : blackjack, dealer_bust, win, continue
 
-> ###14) WinnerType
-> - 승리한 참여자 유형을 나타내는 enum 객체
-> - 필드  
->   : player, dealer, none
 #
 #
 #

@@ -1,9 +1,6 @@
 package blackjack.model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cards {
@@ -12,6 +9,10 @@ public class Cards {
     private final List<Card> cards;
 
     public Cards(List<Card> cards) {
+        if (cards.isEmpty()) {
+            this.cards = new ArrayList<>();
+            return;
+        }
         this.cards = cards;
     }
 
@@ -32,18 +33,6 @@ public class Cards {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    private List<Card> excludeAce() {
-        return cards.stream()
-                .filter(card -> !card.getScore().equals(ACE))
-                .collect(Collectors.toList());
-    }
-
-    private int sumCardsExceptAce(List<Card> numbers){
-        return numbers.stream()
-                .mapToInt(Card::getValueOfScoreExceptAce)
-                .sum();
-    }
-
     private List<Integer> findCombinationForAce() {
         List<Integer> targets = Arrays.asList(1, 11);
         LinkedList<Integer> comb = new LinkedList<>();
@@ -61,6 +50,38 @@ public class Cards {
                 .count();
     }
 
+    private List<Card> excludeAce() {
+        return cards.stream()
+                .filter(card -> !card.getScore().equals(ACE))
+                .collect(Collectors.toList());
+    }
+
+    private int sumCardsExceptAce(List<Card> numbers){
+        return numbers.stream()
+                .mapToInt(Card::getValueOfScoreExceptAce)
+                .sum();
+    }
+
+    public void addCards(List<Card> newCards) {
+        cards.addAll(newCards);
+    }
+
+    private boolean hasACE() {
+        return cards.stream().anyMatch(card -> card.getScore().equals(ACE));
+    }
+
+    public boolean hasMaxScore() {
+        return calculateTotalSum() == MAX_SCORE;
+    }
+
+    public boolean hasOverScore() {
+        return calculateTotalSum() > MAX_SCORE;
+    }
+
+    public String extractInfo() {
+        return cards.stream().map(Card::extractInfo).collect(Collectors.joining(", "));
+    }
+
     private static void reCombination(List<Integer> targets, LinkedList<Integer> comb, LinkedList<Integer> list, int n, int r, int index) {
         if(r == 0){
             comb.add(list.stream()
@@ -75,10 +96,4 @@ public class Cards {
         list.removeLast();
         reCombination(targets, comb, list, n, r, index+1);
     }
-
-    private boolean hasACE() {
-        return cards.stream().anyMatch(card -> card.getScore().equals(ACE));
-    }
-
-
 }
