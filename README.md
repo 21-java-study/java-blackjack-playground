@@ -169,17 +169,17 @@ ex) git checkout -b apply-feedback
 > :  
 
 
-> ###8) Game
-> - controller
+> ###8) BlackJackGame
 > - 블랙잭 게임을 실행하는 가상의 객체
 > ####
 > - 필드  
->   : 지금이 첫 번째 라운드인지 아닌지(isFirstRound)  
+    : dealingshoe  
 >   : 플레이어 리스트(players)  
 >   : 딜러(dealer)
 > ####
 > - 메서드  
 >   : 딜러와 플레이어를 초기화하기  
+    : 카드 지급하기..  
 >   : 첫 번째 라운드에서 딜러와 플레이어에게 모두 2장씩 카드를 지급하기  
 >   : 카드를 추가로 지급받을 수 있는 상태의 참여자들에게 카드 지급하기  
 >   > 플레이어의 경우,  
@@ -204,6 +204,12 @@ ex) git checkout -b apply-feedback
 >    4) dealing shoe에서 갖고 있는 카드가 다 소진되었는지 확인  
 >    > 카드 소진 되어서 종료됐을 경우에는 dealer와 player 중에 가장 21에 가까운 쪽이 이기는 건데..  
     
+> ###9) BlackJackController
+> - 블랙잭 게임 컨트롤러
+> - 필드
+>    : 지금이 첫 번째 라운드인지 아닌지(isFirstRound)  
+> - 메서드
+>   : blackjackGame 객체 생성해서 
 
 > ###10) Name
 > - 참여자 이름 정보를 가지고 있는 원시값 포장 객체

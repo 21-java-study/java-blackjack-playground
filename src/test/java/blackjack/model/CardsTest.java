@@ -32,5 +32,11 @@ public class CardsTest {
                 new Card(new Score("A"), new Suit("하트")),
                 new Card(new Score("A"), new Suit("클로버"))));
         assertThat(cards.calculateTotalSum()).isEqualTo(19);
+
+        cards = new Cards(Arrays.asList(new Card(new Score("J"), new Suit("하트")),
+                new Card(new Score("3"), new Suit("스페이드")),
+                new Card(new Score("A"), new Suit("다이아몬드")),
+                new Card(new Score("8"), new Suit("하트"))));
+        assertThat(cards.calculateTotalSum()).isEqualTo(22);
     }
 }

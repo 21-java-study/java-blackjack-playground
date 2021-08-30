@@ -2,6 +2,7 @@ package blackjack.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -26,5 +27,9 @@ public class Deck {
 
     public Card extractCard(int index) {
         return cards.get(index);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
     }
 }

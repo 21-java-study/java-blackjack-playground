@@ -30,7 +30,9 @@ public class Cards {
                 .mapToInt(sum -> sum + sumCardsExceptAce(excludeAce()))
                 .filter(sum -> sum <= 21)
                 .max()
-                .orElseThrow(NoSuchElementException::new);
+                .orElseGet(combinationForSum.stream()
+                        .mapToInt(sum -> sum + sumCardsExceptAce(excludeAce()))
+                        .min()::getAsInt);
     }
 
     private List<Integer> findCombinationForAce() {
@@ -62,24 +64,15 @@ public class Cards {
                 .sum();
     }
 
-    public void addCards(List<Card> newCards) {
-        cards.addAll(newCards);
-    }
-
     private boolean hasACE() {
-        return cards.stream().anyMatch(card -> card.getScore().equals(ACE));
-    }
-
-    public boolean hasMaxScore() {
-        return calculateTotalSum() == MAX_SCORE;
-    }
-
-    public boolean hasOverScore() {
-        return calculateTotalSum() > MAX_SCORE;
+        return cards.stream()
+                .anyMatch(card -> card.getScore().equals(ACE));
     }
 
     public String extractInfo() {
-        return cards.stream().map(Card::extractInfo).collect(Collectors.joining(", "));
+        return cards.stream()
+                .map(Card::extractInfo)
+                .collect(Collectors.joining(", "));
     }
 
     private static void reCombination(List<Integer> targets, LinkedList<Integer> comb, LinkedList<Integer> list, int n, int r, int index) {
@@ -95,5 +88,17 @@ public class Cards {
         reCombination(targets, comb, list, n, r-1, index);
         list.removeLast();
         reCombination(targets, comb, list, n, r, index+1);
+    }
+
+    public void addCards(List<Card> newCards) {
+        cards.addAll(newCards);
+    }
+
+    public boolean hasMaxScore() {
+        return calculateTotalSum() == MAX_SCORE;
+    }
+
+    public boolean hasOverScore() {
+        return calculateTotalSum() > MAX_SCORE;
     }
 }

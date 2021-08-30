@@ -7,16 +7,32 @@ public abstract class Participant {
     private static final String CARD_LETTER = " 카드";
     private static final String DELIMITER = ": ";
     private final Name name;
-    public BettingMoney bettingMoney;
-    public Cards cards;
+    private BettingMoney bettingMoney;
+    private Cards cards;
 
-    public Participant(String name, int bettingMoney) {
-        this.name = new Name(name);
-        this.bettingMoney = new BettingMoney(bettingMoney);
+    public Participant(Name name, BettingMoney bettingMoney) {
+        this.name = name;
+        this.bettingMoney = bettingMoney;
         this.cards = new Cards(new ArrayList<>());
     }
 
     public abstract boolean canReceiveMoreCard();
+
+    public boolean isBust() {
+        return cards.hasOverScore();
+    }
+
+    public boolean hasOverScore() {
+        return cards.hasOverScore();
+    }
+
+    public boolean hasMaxScore() {
+        return cards.hasMaxScore();
+    }
+
+    public int calculateTotalScore() {
+        return cards.calculateTotalSum();
+    }
 
     public void receiveNewCards(List<Card> newCards){
         cards.addCards(newCards);
@@ -30,4 +46,11 @@ public abstract class Participant {
         return name.getName();
     }
 
+    public int extractBettingMoney() {
+        return bettingMoney.getMoney();
+    };
+
+    public int multipleBettingMoney(double ratio) {
+        return bettingMoney.calculateProfit(ratio);
+    }
 }
