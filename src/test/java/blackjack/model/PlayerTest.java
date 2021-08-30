@@ -32,31 +32,31 @@ public class PlayerTest<m> {
 
     @Test
     void 현시점에서의_플레이어가_갖고있는_카드정보_출력하기() {
-        player.receiveCards(Arrays.asList(new Card(new Score("3"), new Suit("하트")), new Card(new Score("7"), new Suit("다이아몬드"))));
+        player.receiveNewCards(Arrays.asList(new Card(new Score("3"), new Suit("하트")), new Card(new Score("7"), new Suit("다이아몬드"))));
         assertThat(player.extractCardsInfo()).isEqualTo("케이크 카드: 3하트, 7다이아몬드");
     }
 
     @Test
     void 본인이_블랙잭으로_이겼을때_최종수익_출력하기() {
-        player.receiveCards(Arrays.asList(new Card(new Score("10"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
+        player.receiveNewCards(Arrays.asList(new Card(new Score("10"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
         assertThat(player.calculateProfit(true, DealerStatus.LOSE)).isEqualTo(15000);
     }
 
     @Test
     void 딜러가_이겨서_본인이_졌을때_최종수익_출력하기() {
-        player.receiveCards(Arrays.asList(new Card(new Score("7"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
+        player.receiveNewCards(Arrays.asList(new Card(new Score("7"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
         assertThat(player.calculateProfit(true, DealerStatus.WIN)).isEqualTo(-10000);
     }
 
     @Test
     void 딜러가_이겼는데_본인도_이겼을때_최종수익_출력하기() {
-        player.receiveCards(Arrays.asList(new Card(new Score("10"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
+        player.receiveNewCards(Arrays.asList(new Card(new Score("10"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
         assertThat(player.calculateProfit(true, DealerStatus.WIN)).isEqualTo(10000);
     }
 
     @Test
     void 딜러가_졌는데_본인도_졌을때_최종수익_출력하기() {
-        player.receiveCards(Arrays.asList(new Card(new Score("7"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
+        player.receiveNewCards(Arrays.asList(new Card(new Score("7"), new Suit("하트")), new Card(new Score("A"), new Suit("다이아몬드"))));
         assertThat(player.calculateProfit(true, DealerStatus.LOSE)).isEqualTo(-10000);
     }
 

@@ -11,7 +11,6 @@ public class Player extends Participant {
         return !cards.hasOverScore();
     }
 
-    @Override
     public int calculateProfit(Boolean isFirstGround, DealerStatus dealerStatus) {
         if (DealerStatus.isWin(dealerStatus)) {
             return calProfitWhenDealerWin();
@@ -21,7 +20,7 @@ public class Player extends Participant {
 
     private int calProfitWhenDealerLose(Boolean isFirstGround) {
         // 본인이 블랙잭이면, 베팅 금액 1.5배
-        if (cards.hasMaxScore() && isFirstGround) {
+        if (isBlackjack(isFirstGround)) {
             return bettingMoney.calculateProfit(1.5);
         }
         // 본인이 21 달성 못했으면 베팅 금액 -1배
@@ -30,6 +29,10 @@ public class Player extends Participant {
         }
         // 본인이 21 달성했으면 베팅 금액 1배
         return bettingMoney.getMoney();
+    }
+
+    public boolean isBlackjack(Boolean isFirstGround) {
+        return cards.hasMaxScore() && isFirstGround;
     }
 
     private int calProfitWhenDealerWin() {

@@ -10,7 +10,7 @@ public abstract class Participant {
     public BettingMoney bettingMoney;
     public Cards cards;
 
-    protected Participant(String name, int bettingMoney) {
+    public Participant(String name, int bettingMoney) {
         this.name = new Name(name);
         this.bettingMoney = new BettingMoney(bettingMoney);
         this.cards = new Cards(new ArrayList<>());
@@ -18,9 +18,7 @@ public abstract class Participant {
 
     public abstract boolean canReceiveMoreCard();
 
-    public abstract int calculateProfit(Boolean isFirstRound, DealerStatus dealerStatus);
-
-    public void receiveCards(List<Card> newCards){
+    public void receiveNewCards(List<Card> newCards){
         cards.addCards(newCards);
     }
 
