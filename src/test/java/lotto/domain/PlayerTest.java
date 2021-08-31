@@ -29,5 +29,11 @@ public class PlayerTest {
         assertThat(player.getScore()).isEqualTo(19);
     }
 
+    @Test
+    void test_player_do_bet(){
+        player.doBet(10000);
+        assertThat(player.getBetAmount()).isEqualTo(10000);
+    }
+
 
 }
